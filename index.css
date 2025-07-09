@@ -1,0 +1,471 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    font-family: "Poppins", serif;
+}
+
+body{
+    background-color: rgb(121, 121, 121);
+    color: white;
+    font-size: 10px;
+    overflow: hidden;
+    background-image: radial-gradient(#696969, #181818);
+}
+
+header{
+    position: fixed;
+    width: 70vw;
+    left: 50%;
+    transform: translateX(-50%);
+    display: grid;
+    align-items: center;
+    grid-template-columns: 1fr 500px;
+    gap: 10%;
+    z-index: 2;
+
+    & img{
+        height: 150px;
+        width: 150px;
+    }
+
+    & nav{
+        & ul{
+            display: grid;
+            grid-template-columns: repeat(3, 200px);
+            text-shadow: 0px 6px 10px #000;
+        }
+    }
+}
+
+section{
+    height: 100vh;
+    position: relative;
+
+    & .list{
+        width: 70vw;
+        height: 100%;
+        margin: auto;
+        position: relative;
+
+        & .item{
+            position: absolute;
+            inset: 0;
+
+            & .car-img{
+                left: 10%;
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                width: 70%;
+
+                & img{
+                    width: 100%;
+                    transform: rotate(-30deg);
+                }
+            }
+
+            & .content{
+                position: absolute;
+                right: 100px;
+                width: 50%;
+                height: 70%;
+                display: flex;
+                flex-direction: center;
+                align-items: end;
+                gap: 10px;
+
+                & .car-info{
+                    font-weight: bold;
+                    text-shadow: 0px 6px 10px #000000;
+                }
+
+                & h2{
+                    font-size: 8em;
+                    line-height: 1em;
+                    text-shadow: 0px 6px 10px #000000;
+                    font-family: "League Gothic", serif;
+                }
+
+                & .descri{
+                    color: #d3d3d3;
+                    font-size: 12px;
+                    text-align: right;
+                    max-width: 400px;
+                    text-shadow: 0px 6px 10px #000;
+                }
+
+                & .saiba{
+                    border-radius: 30px;
+                    height: 15%;
+                    width: 220px;
+                    text-transform: uppercase;
+                    border: 2px solid #d3d3d3;
+                    background-color: #ffffff;
+                    color: black;
+                    cursor: pointer;
+                    font-weight: bold;
+                    font-family: "League Gothic", serif;
+                    text-shadow: 0px 6px 10px #000;
+                }
+            }
+        }
+        
+        &::before{
+            content: '';
+            position: absolute;
+            height: 200px;
+            width: 100%;
+            top: 50%;
+            border-top: 1px solid #ffffff;
+        }
+    }
+
+    .arrows{
+        width: 70vw;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -25px);
+        display: flex;
+        justify-content: space-between;
+
+        & button:nth-child(1){
+            & img{
+                transform: scale(-1);
+            }
+        }
+
+        & button{
+            top: 60%;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+
+
+            & img{
+                width: 30px;
+                margin-top: 4px;
+                cursor: pointer;
+            }
+
+            &:hover{
+                background-color: #d1b200;
+            }
+        }
+    }
+
+    .indicators{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%);
+        height: 200px;
+        width: 90vw;
+        display: flex;
+        flex-direction: column;
+        justify-content: end;
+        gap: 15px;
+
+        & .number{
+            font-size: 5em;
+            font-family: "League Gothic", serif;
+            text-shadow: 0px 6px 10px #000;
+        }
+
+        & ul{
+            display: flex;
+            gap: 10px;
+
+            & li{
+                width: 50px;
+                height: 5px;
+                background-color: #ffffff;
+                border-radius: 5px;
+                transition: 0.5s;
+            }
+
+            & .active{
+                background-color: white;
+            }
+        }
+    }
+}
+
+/*Formulário*/
+
+header nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.5em;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+header nav ul li a:hover,
+header nav ul li a:focus {
+  color: #ffffff;
+  text-shadow: 0px 6px 10px #000;
+  outline: none;
+}
+
+.contact-section {
+  max-width: 700px;
+  margin: 80px auto;
+  padding: 70px;
+  background: linear-gradient(100deg, #1a1a1a, #0c0c0c);
+  border-radius: 20px;
+  box-shadow: 0 0 20px rgba(104, 104, 104, 0.05);
+  color: #ffffff;
+}
+
+.contact-section h2 {
+  font-size: 4.2em;
+  text-align: center;
+  margin-bottom: 30px;
+  font-family: "League Gothic", serif;
+  text-shadow: 0 4px 10px #000;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.contact-form label {
+  font-weight: 400;
+  color: #ffffff;
+  margin-bottom: 5px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  background-color: #000000;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 15px;
+  color: #fff;
+  font-size: 1em;
+  transition: 0.3s ease;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: 2px solid #0a0a0a;
+}
+
+.contact-form textarea {
+  resize: none;
+  min-height: 100px;
+}
+
+.contact-form .form-buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+/*botão de enviar e limpar*/
+
+.contact-form input[type="submit"],
+.contact-form input[type="reset"] {
+  background-color: #000000;
+  color: #ffffff;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: background-color 0.3s ease;
+}
+
+.contact-form input[type="submit"]:hover,
+.contact-form input[type="reset"]:hover {
+  background-color: #858585;
+}
+
+/*Aprimorar aqui*/
+
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+tbody {
+  height: 50%;  
+  color: #ffffff;
+  font-size: 16px;
+  padding-top: 100px; /* Espaço para o header fixo */
+}
+
+/* Cabeçalho */
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 60px;
+  z-index: 1000;
+  
+}
+
+header img {
+  height: 150px;
+  width: 300px;
+}
+
+header nav ul {
+  display: flex;
+  gap: 40px;
+  list-style: none;
+}
+
+header nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.1rem;
+  transition: 0.3s;
+}
+
+header nav ul li a:hover {
+  color: #ffffff;
+  text-shadow: 0 0 10px #ffffff;
+}
+
+/* Seção com a tabela */
+
+/* Estilo geral da tabela */
+
+table {
+  width: 80vw;
+  margin: 160px auto 60px;
+  border-collapse: separate;
+  border-spacing: 0 15px;
+  font-size: 1.1rem;
+  color: #eee;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+  border-radius: 12px;
+  overflow: hidden;
+  background: radial-gradient(circle, #222 0%, #111 100%);
+}
+
+/* Cabeçalho da tabela */
+
+thead tr {
+  background-color: #1a1a1a;
+  color: #ffffff;
+  background: linear-gradient(100deg, #1a1a1a, #0c0c0c);
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+thead th {
+  padding: 18px 25px;
+  text-align: center;
+  border-bottom: 2px solid #333;
+}
+
+/* Corpo da tabela */
+
+tbody tr {
+  background: #2a2a2a;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+  border-radius: 12px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.7);
+}
+
+tbody tr:hover {
+  background-color: #3d3d3d;
+}
+
+tbody td {
+  padding: 20px 30px;
+  text-align: center;
+  vertical-align: middle;
+  border-bottom: none; 
+  color: #ddd;
+}
+
+/* Imagens dos carros */
+
+tbody td img {
+  height: 200px;
+  width: 600px;
+  border-radius: 10px;
+  box-shadow: 0 6px 15px rgba(177, 177, 177, 0.4);
+  transition: transform 0.4s ease;
+}
+
+tbody td img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 25px rgba(255, 255, 255, 0.7);
+}
+
+/* Responsividade */
+
+@media (max-width: 900px) {
+  table {
+    width: 95vw;
+    font-size: 0.9rem;
+  }
+  
+  tbody td img {
+    width: 140px;
+  }
+}
+
+@media (max-width: 600px) {
+  table, thead, tbody, tr, th, td {
+    display: block;
+  }
+  
+  thead tr {
+    display: none;
+  }
+  
+  tbody tr {
+    margin-bottom: 20px;
+    background: #2a2a2a;
+    border-radius: 12px;
+    padding: 15px;
+  }
+  
+  tbody td {
+    text-align: right;
+    padding-left: 50%;
+    position: relative;
+    border-bottom: 1px solid #444;
+  }
+  
+  tbody td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 15px;
+    top: 20px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #c4c4c4;
+    font-size: 0.9rem;
+  }
+  
+  tbody td img {
+    width: 100%;
+    margin-bottom: 15px;
+    border-radius: 12px;
+    box-shadow: none;
+  }
+}

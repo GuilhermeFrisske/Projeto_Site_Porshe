@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Porsche</title>
+    <link rel="stylesheet" href="index.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=League+Gothic&family=Poppins:wght@400;600&display=swap" rel="stylesheet"/>
+</head>
+<body>
+    <header>
+        <img src="logo.png" alt="Logo da Porsche" />
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="carros.html">Carros</a></li>
+                <li><a href="contatos.html">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section class="contact-section" id="contato">
+        <h2>FALE CONOSCO</h2>
+        <form class="contact-form" action="#" method="POST">
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome" placeholder="Digite seu nome" required />
+
+            <label for="email">E-mail:</label>
+            <input type="email" id="email" name="email" placeholder="Digite seu e-mail" required />
+
+            <label for="datadenascimento">Data de Nascimento:</label>
+            <input type="date" id="datadenascimento" name="datadenascimento" required />
+
+            <label for="telefone">Telefone:</label>
+            <input type="tel" id="telefone" name="telefone" placeholder="(99) 99999-9999" />
+
+            <label for="mensagem">Mensagem:</label>
+            <textarea id="mensagem" name="mensagem" rows="4" placeholder="Escreva sua mensagem aqui..." required></textarea>
+
+            <div style="display: flex; gap: 20px;">
+                <input type="submit" value="Enviar" />
+                <input type="reset" value="Limpar Tela" />
+            </div>
+        </form>
+    </section>
+</body>
+</html>
