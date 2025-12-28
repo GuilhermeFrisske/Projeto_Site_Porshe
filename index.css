@@ -1,3 +1,12 @@
+/* CONFIGURAÇÕES GERAIS E VARIÁVEIS */
+:root {
+    --porsche-red: #d5001c;
+    --dark: #0a0a0a;
+    --gray: #f2f2f2;
+    --white: #ffffff;
+    --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -8,10 +17,10 @@ body {
     font-family: 'Poppins', sans-serif;
     background-color: #000;
     color: #fff;
-    overflow: hidden;
+    overflow-x: hidden; /* Evita rolagem lateral */
 }
 
-/* Navbar */
+/* NAVBAR */
 .navbar {
     position: absolute;
     top: 0;
@@ -23,9 +32,18 @@ body {
     z-index: 100;
 }
 
-.logo { height: 30px; filter: brightness(0) invert(1); }
+.logo { 
+    height: 30px; 
+    filter: brightness(0) invert(1); 
+}
 
-.nav-menu { display: flex; list-style: none; gap: 40px; }
+.nav-menu { 
+    display: flex; 
+    list-style: none; 
+    gap: 40px; 
+}
+
+/* ESTILO DO HREF (LINKS DO MENU) */
 .nav-menu a { 
     color: #fff; 
     text-decoration: none; 
@@ -34,11 +52,32 @@ body {
     font-weight: 700; 
     letter-spacing: 2px;
     opacity: 0.7;
-    transition: 0.3s;
+    position: relative;
+    padding: 5px 0;
+    transition: var(--transition);
 }
-.nav-menu a:hover { opacity: 1; }
 
+.nav-menu a:hover { 
+    opacity: 1; 
+    color: var(--porsche-red);
+}
 
+.nav-menu a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--porsche-red);
+    transition: var(--transition);
+}
+
+.nav-menu a:hover::after {
+    width: 100%;
+}
+
+/* SLIDER PRINCIPAL */
 .slider {
     height: 100vh;
     width: 100vw;
@@ -72,6 +111,7 @@ body {
     filter: brightness(0.5);
 }
 
+/* CONTEÚDO DO SLIDER */
 .content {
     max-width: 600px;
     transform: translateY(50px);
@@ -93,6 +133,7 @@ body {
     letter-spacing: 2px;
 }
 
+/* BOTÃO SAIBA MAIS */
 .saiba {
     margin-top: 25px;
     padding: 15px 45px;
@@ -104,11 +145,16 @@ body {
     text-transform: uppercase;
     letter-spacing: 1px;
     transition: 0.3s;
+    text-decoration: none;
+    display: inline-block;
 }
 
-.saiba:hover { background: #fff; color: #000; }
+.saiba:hover { 
+    background: #fff; 
+    color: #000; 
+}
 
-
+/* SETAS DE NAVEGAÇÃO */
 .arrows {
     position: absolute;
     bottom: 50px;
@@ -129,8 +175,12 @@ body {
     transition: 0.3s;
 }
 
-.arrows button:hover { background: #fff; color: #000; }
+.arrows button:hover { 
+    background: #fff; 
+    color: #000; 
+}
 
+/* INDICADORES */
 .indicators {
     position: absolute;
     left: 60px;
@@ -138,7 +188,12 @@ body {
     z-index: 10;
 }
 
-.number { font-size: 4rem; font-weight: 700; font-family: 'League Gothic'; line-height: 1; }
+.number { 
+    font-size: 4rem; 
+    font-weight: 700; 
+    font-family: 'League Gothic'; 
+    line-height: 1; 
+}
 
 .dot {
     height: 3px;
@@ -148,4 +203,22 @@ body {
     margin-right: 8px;
     transition: 0.4s;
 }
-.dot.active { background: #fff; width: 60px; }
+
+.dot.active { 
+    background: #fff; 
+    width: 60px; 
+}
+
+/* ANIMAÇÃO DE ENTRADA */
+@keyframes fadeIn { 
+    from { opacity: 0; transform: translateY(20px); } 
+    to { opacity: 1; transform: translateY(0); } 
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 900px) {
+    .navbar { padding: 20px 30px; }
+    .nav-menu { display: none; } /* Oculta menu no mobile */
+    .arrows { right: 30px; }
+    .indicators { left: 30px; }
+}
