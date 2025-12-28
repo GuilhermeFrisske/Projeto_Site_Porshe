@@ -9,12 +9,12 @@
 </head>
 <body>
 
-    <header>
+    <header class="navbar">
         <img src="logo.png" alt="Porsche" class="logo">
         <nav>
-            <ul>
-                <li><a href="#">Modelos</a></li>
-                <li><a href="#">Carros</a></li>
+            <ul class="nav-menu">
+                <li><a href="modelos.html">Modelos</a></li>
+                <li><a href="carros.html">Carros</a></li>
                 <li><a href="#">Contato</a></li>
             </ul>
         </nav>
@@ -23,9 +23,9 @@
     <main class="slider">
         <div class="list">
             <div class="item active">
-                <div class="car-img">
-                    <img src="1.png" alt="Porsche 911">
-                </div>
+                <video autoplay muted loop playsinline class="bg-video">
+                    <source src="video-porsche-911.mp4" type="video/mp4">
+                </video>
                 <div class="content">
                     <p class="car-info">2024</p>
                     <h2>911 TURBO</h2>
@@ -35,21 +35,21 @@
             </div>
 
             <div class="item">
-                <div class="car-img">
-                    <img src="2.png" alt="Porsche Taycan">
-                </div>
+                <video autoplay muted loop playsinline class="bg-video">
+                    <source src="video-taycan.mp4" type="video/mp4">
+                </video>
                 <div class="content">
                     <p class="car-info">2024</p>
                     <h2>TAYCAN</h2>
-                    <p class="descri">A força elétrica em sua forma mais pura e veloz.</p>
+                    <p class="descri">A força elétrica em sua forma mais pura e veloz. A alma Porsche, eletrificada.</p>
                     <button class="saiba">Ver Detalhes</button>
                 </div>
             </div>
         </div>
 
         <div class="arrows">
-            <button id="prev">PREV</button>
-            <button id="next">NEXT</button>
+            <button id="prev" aria-label="Anterior"><</button>
+            <button id="next" aria-label="Próximo">></button>
         </div>
 
         <div class="indicators">
@@ -62,37 +62,47 @@
     </main>
 
     <script>
-      const items = document.querySelectorAll('.item');
+        const items = document.querySelectorAll('.item');
+const dots = document.querySelectorAll('.dot');
 const next = document.getElementById('next');
 const prev = document.getElementById('prev');
-const dots = document.querySelectorAll('.dot');
 const numberDisplay = document.querySelector('.number');
 
 let active = 0;
 const count = items.length;
 
 function updateSlider() {
-    // Remove active de todos
-    document.querySelector('.item.active').classList.remove('active');
-    document.querySelector('.dot.active').classList.remove('active');
+    items.forEach((item, index) => {
+        const video = item.querySelector('video');
+        
+        if (index === active) {
+            item.classList.add('active');
+            dots[index].classList.add('active');
+            if (video) video.play();
+        } else {
+            item.classList.remove('active');
+            dots[index].classList.remove('active');
+            if (video) {
+                video.pause();
+                video.currentTime = 0;
+            }
+        }
+    });
 
-    // Adiciona ao atual
-    items[active].classList.add('active');
-    dots[active].classList.add('active');
-
-    // Atualiza número
     numberDisplay.innerText = active < 9 ? `0${active + 1}` : active + 1;
 }
 
 next.onclick = () => {
-    active = active + 1 >= count ? 0 : active + 1;
+    active = (active + 1) % count;
     updateSlider();
 }
 
 prev.onclick = () => {
-    active = active - 1 < 0 ? count - 1 : active - 1;
+    active = (active - 1 + count) % count;
     updateSlider();
 }
+
+window.onload = updateSlider;
     </script>
 </body>
 </html>

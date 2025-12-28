@@ -2,68 +2,112 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Porsche</title>
-    <link rel="stylesheet" href="index.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=League+Gothic&family=Poppins:ital,wght@0,100..900&display=swap" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Porsche Elite</title>
+    <link rel="stylesheet" href="carros.css" />
+    <link href="https://fonts.googleapis.com/css2?family=League+Gothic&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
 </head>
 <body>
-    <header>
-        <img src="logo.png" alt="Logo da Porsche" />
-        <nav>
-            <ul>
-                <li><a href="index.html">Início</a></li>
-                <li><a href="carros.html">Carros</a></li>
-                <li><a href="contatos.html">Contato</a></li>
-            </ul>
+
+    <div class="container">
+        <header class="main-header">
+            <a href="#" class="logo"><img src="logo.png" alt="Porsche" style="height: 30px;"></a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#">Modelos</a></li>
+                    <li><a href="#">Personalizar</a></li>
+                    <li><a href="#">Contato</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <nav class="tabs-nav">
+            <button class="tab-btn active" onclick="openTab(event, 'p911')">911 Carrera</button>
+            <button class="tab-btn" onclick="openTab(event, 'ferrari')">Ferrari F8</button>
+            <button class="tab-btn" onclick="openTab(event, 'lambo')">Lamborghini</button>
         </nav>
-    </header>
 
-    <main>
-        <section>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Imagem</th>
-                        <th>Carro</th>
-                        <th>Preço</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><img src="1.png" alt="Carro 1" width="200" /></td>
-                        <td>Porsche 911</td>
-                        <td>R$ 1.200.000</td>
-                    </tr>
-                    <tr>
-                        <td><img src="2.png" alt="Carro 2" width="200" /></td>
-                        <td>Ferrari</td>
-                        <td>R$ 950.000</td>
-                    </tr>
-                    <tr>
-                        <td><img src="3.png" alt="Carro 3" width="200" /></td>
-                        <td>Lamborguini</td>
-                        <td>R$ 1.500.000</td>
-                    </tr>
-                    <tr>
-                        <td><img src="" alt="" width="200" /></td>
-                        <td>Porsche (modelo indefinido)</td>
-                        <td>R$ --</td>
-                    </tr>
-                    <tr>
-                        <td><img src="" alt="" width="200" /></td>
-                        <td>Porsche (modelo indefinido)</td>
-                        <td>R$ --</td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
-    </main>
+        <div id="p911" class="tab-content active">
+            <div class="car-display">
+                <div class="slider-container">
+                    <button class="arrow left" onclick="changeSlide(this, -1)">&#10094;</button>
+                    <div class="slides">
+                        <img src="frente.jpg" alt="911 Front">
+                        <img src="tras.avif" alt="911 Side">
+                    </div>
+                    <button class="arrow right" onclick="changeSlide(this, 1)">&#10095;</button>
+                </div>
+                <div class="car-info">
+                    <h2>911 Carrera S</h2>
+                    <span class="price">R$ 1.200.000</span>
+                    <a href="https://wa.me/5500000000000?text=Olá, quero o Porsche 911" class="btn-buy">Iniciar Compra</a>
+                </div>
+            </div>
+        </div>
 
-    <footer>
-        <p>&copy; 2025 Porsche. Todos os direitos reservados.</p>
-    </footer>
+        <div id="ferrari" class="tab-content">
+            <div class="car-display">
+                <div class="slider-container">
+                    <button class="arrow left" onclick="changeSlide(this, -1)">&#10094;</button>
+                    <div class="slides">
+                        <img src="2.png" alt="Ferrari 1">
+                        <img src="2_v2.png" alt="Ferrari 2">
+                    </div>
+                    <button class="arrow right" onclick="changeSlide(this, 1)">&#10095;</button>
+                </div>
+                <div class="car-info">
+                    <h2>Ferrari F8 Tributo</h2>
+                    <span class="price">R$ 950.000</span>
+                    <a href="https://wa.me/5500000000000?text=Olá, quero a Ferrari" class="btn-buy">Iniciar Compra</a>
+                </div>
+            </div>
+        </div>
+
+        <div id="lambo" class="tab-content">
+            <div class="car-display">
+                <div class="slider-container">
+                    <button class="arrow left" onclick="changeSlide(this, -1)">&#10094;</button>
+                    <div class="slides">
+                        <img src="3.png" alt="Lambo 1">
+                        <img src="3_v2.png" alt="Lambo 2">
+                    </div>
+                    <button class="arrow right" onclick="changeSlide(this, 1)">&#10095;</button>
+                </div>
+                <div class="car-info">
+                    <h2>Huracán EVO</h2>
+                    <span class="price">R$ 1.500.000</span>
+                    <a href="https://wa.me/5500000000000?text=Olá, quero a Lamborghini" class="btn-buy">Iniciar Compra</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openTab(evt, carID) {
+
+            const contents = document.querySelectorAll(".tab-content");
+            contents.forEach(content => content.classList.remove("active"));
+
+            const buttons = document.querySelectorAll(".tab-btn");
+            buttons.forEach(btn => btn.classList.remove("active"));
+
+            document.getElementById(carID).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
+
+        function changeSlide(btn, dir) {
+            const container = btn.parentElement.querySelector(".slides");
+            const total = container.querySelectorAll("img").length;
+            let current = parseInt(container.getAttribute("data-index") || 0);
+            
+            current += dir;
+            if (current >= total) current = 0;
+            if (current < 0) current = total - 1;
+
+            container.setAttribute("data-index", current);
+            container.style.transform = `translateX(-${current * 100}%)`;
+        }
+    </script>
 </body>
 </html>
