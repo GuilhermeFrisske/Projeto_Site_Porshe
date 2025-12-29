@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Porsche Elite</title>
+    <title>Porsche Elite | Modelos</title>
     <link rel="stylesheet" href="carros.css" />
     <link href="https://fonts.googleapis.com/css2?family=League+Gothic&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
 </head>
@@ -11,13 +11,15 @@
 
     <div class="container">
         <header class="main-header">
-            <a href="#" class="logo"><img src="" alt="Porsche" style="height: 30px;"></a>
+            <a href="index.html" class="logo">
+                <img src="imagens/718frente.webp" alt="Porsche" style="height: 30px; filter: brightness(0);">
+            </a>
             <nav>
                 <ul class="nav-links">
                     <li><a href="index.html">Home</a></li>
                     <li><a href="#">Modelos</a></li>
                     <li><a href="#">Personalizar</a></li>
-                    <li><a href="#">Contato</a></li>
+                    <li><a href="contato.html">Contato</a></li>
                 </ul>
             </nav>
         </header>
@@ -28,11 +30,11 @@
             <button class="tab-btn" onclick="openTab(event, 'taycan')">Porsche TAYCAN</button>
         </nav>
 
-        <div id="p911" class="tab-content active">
+        <div id="911" class="tab-content active">
             <div class="car-display">
                 <div class="slider-container">
                     <button class="arrow left" onclick="changeSlide(this, -1)">&#10094;</button>
-                    <div class="slides">
+                    <div class="slides" data-index="0">
                         <img src="imagens/911frente.jpg" alt="911 Front">
                         <img src="imagens/911tras.avif" alt="911 Side">
                     </div>
@@ -46,38 +48,38 @@
             </div>
         </div>
 
-        <div id="ferrari" class="tab-content">
+        <div id="718" class="tab-content">
             <div class="car-display">
                 <div class="slider-container">
                     <button class="arrow left" onclick="changeSlide(this, -1)">&#10094;</button>
-                    <div class="slides">
-                        <img src="imagens/718frente.webp" alt="Ferrari 1">
-                        <img src="imagens/718tras.webp" alt="Ferrari 2">
+                    <div class="slides" data-index="0">
+                        <img src="imagens/718frente.webp" alt="718 Spyder Front">
+                        <img src="imagens/718tras.webp" alt="718 Spyder Side">
                     </div>
                     <button class="arrow right" onclick="changeSlide(this, 1)">&#10095;</button>
                 </div>
                 <div class="car-info">
                     <h2>Porsche 718 Spyder RS</h2>
                     <span class="price">R$ 950.000</span>
-                    <a href="https://wa.me/5500000000000?text=Olá, quero a Ferrari" class="btn-buy">Iniciar Compra</a>
+                    <a href="https://wa.me/5500000000000?text=Olá, quero o Porsche 718" class="btn-buy">Iniciar Compra</a>
                 </div>
             </div>
         </div>
 
-        <div id="lambo" class="tab-content">
+        <div id="taycan" class="tab-content">
             <div class="car-display">
                 <div class="slider-container">
                     <button class="arrow left" onclick="changeSlide(this, -1)">&#10094;</button>
-                    <div class="slides">
-                        <img src="imagens/taycanfrente.webp" alt="Lambo 1">
-                        <img src="imagens/taycantras.avif" alt="Lambo 2">
+                    <div class="slides" data-index="0">
+                        <img src="imagens/taycanfrente.webp" alt="Taycan Front">
+                        <img src="imagens/taycantras.avif" alt="Taycan Side">
                     </div>
                     <button class="arrow right" onclick="changeSlide(this, 1)">&#10095;</button>
                 </div>
                 <div class="car-info">
                     <h2>Porsche TAYCAN</h2>
                     <span class="price">R$ 1.500.000</span>
-                    <a href="https://wa.me/5500000000000?text=Olá, quero a Lamborghini" class="btn-buy">Iniciar Compra</a>
+                    <a href="https://wa.me/5500000000000?text=Olá, quero o Porsche Taycan" class="btn-buy">Iniciar Compra</a>
                 </div>
             </div>
         </div>
