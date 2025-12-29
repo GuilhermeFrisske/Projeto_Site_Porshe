@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Porsche 911 Turbo S | Engineering Excellence</title>
+    <link rel="stylesheet" href="911.css">
+    <link href="https://fonts.googleapis.com/css2?family=League+Gothic&family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="navbar">
+        <img src="imagens/718frente.webp" alt="Porsche" class="logo">
+        <nav>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#">Modelos</a></li>
+                <li><a href="#">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero-details">
+        <video autoplay muted loop playsinline id="bg-video">
+            <source src="imagens/coverr-rear-view-of-a-porsche-911-turbo-s-9150-1080p.mp4" type="video/mp4">
+        </video>
+        <div class="video-overlay"></div>
+        
+        <div class="main-stage">
+            <div class="title-wrapper">
+                <h1 data-text="911 Turbo S">911 Turbo S</h1>
+                <span class="subtitle">Engineering Excellence</span>
+            </div>
+
+            <div class="reveal-content">
+                <div class="line-detail"></div>
+                <div class="reveal-text">
+                    <p>O ícone da versatilidade.</p>
+                    <p class="bold">A força bruta biturbo.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="scroll-indicator">
+            <div class="mouse"></div>
+        </div>
+    </section>
+
+    <section class="specs-container">
+        <div class="spec-item">
+            <span class="label">Potência</span>
+            <div class="spec-value-wrapper"><span class="counter" data-target="650">0</span> <small>CV</small></div>
+        </div>
+        <div class="spec-item">
+            <span class="label">0-100 km/h</span>
+            <div class="spec-value-wrapper"><span class="counter" data-target="2.7">0</span> <small>s</small></div>
+        </div>
+        <div class="spec-item">
+            <span class="label">V. Máxima</span>
+            <div class="spec-value-wrapper"><span class="counter" data-target="330">0</span> <small>km/h</small></div>
+        </div>
+        <div class="spec-item">
+            <span class="label">Torque</span>
+            <div class="spec-value-wrapper"><span class="counter" data-target="800">0</span> <small>Nm</small></div>
+        </div>
+    </section>
+
+    <section class="description-section">
+        <div class="desc-content">
+            <h2>A Forma da <br><span class="red-text">Velocidade</span></h2>
+        </div>
+        <div class="desc-text">
+            <p>O motor boxer biturbo de seis cilindros posicionado na traseira é o coração pulsante do 911 Turbo S. Com 650 CV, ele redefine o que é possível em um carro de rua, unindo luxo e performance extrema.</p>
+            <a href="index.html" class="back-btn"><span>Voltar ao Início</span></a>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+    // 1. Inicia as animações do Hero após o carregamento
+    setTimeout(() => {
+        document.body.classList.add('loaded');
+    }, 100);
+
+    // 2. Função de Contagem Progressiva (Easing Out Quint)
+    const animateNumbers = (obj, start, end, duration) => {
+        let startTimestamp = null;
+        const step = (timestamp) => {
+            if (!startTimestamp) startTimestamp = timestamp;
+            const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+            
+            // Efeito de desaceleração suave (Quint Out)
+            const ease = 1 - Math.pow(1 - progress, 5);
+            const currentValue = ease * (end - start) + start;
+            
+            // Formatação: se for decimal (0-100), usa vírgula. Se for inteiro, usa ponto de milhar.
+            obj.innerHTML = end % 1 === 0 
+                ? Math.floor(currentValue).toLocaleString('pt-BR') 
+                : currentValue.toFixed(1).replace('.', ',');
+                
+            if (progress < 1) {
+                window.requestAnimationFrame(step);
+            } else {
+                // Garante que o número final seja exato
+                obj.innerHTML = end % 1 === 0 
+                    ? end.toLocaleString('pt-BR') 
+                    : end.toFixed(1).replace('.', ',');
+            }
+        };
+        window.requestAnimationFrame(step);
+    };
+
+    // 3. Observer para detectar o Scroll
+    const observerOptions = {
+        threshold: 0.3 // Dispara quando 30% da seção estiver visível
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // Lógica para as Specs (Números)
+                if (entry.target.classList.contains('specs-container')) {
+                    const items = entry.target.querySelectorAll('.spec-item');
+                    
+                    items.forEach((item, index) => {
+                        setTimeout(() => {
+                            item.classList.add('animate-focus'); // Ativa a borda vermelha no CSS
+                            const counter = item.querySelector('.counter');
+                            const targetValue = parseFloat(counter.getAttribute('data-target'));
+                            
+                            animateNumbers(counter, 0, targetValue, 2500); // 2.5 segundos de animação
+                        }, index * 200); // Delay entre cada item (cascata)
+                    });
+                }
+
+                // Lógica para a Seção de Descrição
+                if (entry.target.classList.contains('description-section')) {
+                    entry.target.classList.add('visible');
+                }
+
+                // Para de observar após animar uma vez
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    // Começa a observar as seções
+    const specsSection = document.querySelector('.specs-container');
+    const descSection = document.querySelector('.description-section');
+
+    if (specsSection) observer.observe(specsSection);
+    if (descSection) observer.observe(descSection);
+});
+    </script>
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Porsche 911 GT3 | Motorsport Soul</title>
+    <link rel="stylesheet" href="gt3.css">
+    <link href="https://fonts.googleapis.com/css2?family=League+Gothic&family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="navbar">
+        <img src="imagens/718frente.webp" alt="Porsche" class="logo">
+        <nav>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#">Modelos</a></li>
+                <li><a href="contato.html">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero-details">
+        <video autoplay muted loop playsinline id="bg-video">
+            <source src="imagens/coverr-rear-view-of-a-porsche-gt3-3421-1080p.mp4" type="video/mp4">
+        </video>
+        <div class="video-overlay"></div>
+        
+        <div class="main-stage">
+            <div class="title-wrapper">
+                <h1 data-text="GT3">GT3</h1>
+                <span class="subtitle">The 911 Motorsport Legend</span>
+            </div>
+
+            <div class="reveal-content">
+                <div class="line-detail"></div>
+                <p>Engenharia de Flacht.<br>Performance de Pista.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="specs-container">
+        <div class="spec-item">
+            <h3>Potência</h3>
+            <div class="spec-value-wrapper"><span class="counter" data-target="510">0</span> CV</div>
+        </div>
+        <div class="spec-item">
+            <h3>RPM Máximo</h3>
+            <div class="spec-value-wrapper"><span class="counter" data-target="9000">0</span></div>
+        </div>
+        <div class="spec-item">
+            <h3>0-100 km/h</h3>
+            <div class="spec-value-wrapper"><span class="counter" data-target="3.4">0</span> s</div>
+        </div>
+        <div class="spec-item">
+            <h3>Peso</h3>
+            <div class="spec-value-wrapper"><span class="counter" data-target="1435">0</span> kg</div>
+        </div>
+    </section>
+
+    <section class="description-section">
+        <div class="desc-content">
+            <h2>Pureza <br><span class="red-text">Mecânica</span></h2>
+        </div>
+        <div class="desc-text">
+            <p>O Porsche 911 GT3 é a simbiose perfeita entre pista e estrada. Cada detalhe foi esculpido para garantir a máxima nitidez de performance e conexão com o asfalto.</p>
+            <a href="index.html" class="back-btn">Voltar à Garagem</a>
+        </div>
+    </section>
+
+    <script>
+        // Dispara a animação principal
+        window.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                document.body.classList.add('loaded');
+            }, 100);
+        });
+
+        // Função de contagem suave (Easing Out Quint)
+        function animateValue(obj, start, end, duration) {
+            let startTimestamp = null;
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                const easeProgress = 1 - Math.pow(1 - progress, 5);
+                const currentValue = easeProgress * (end - start) + start;
+                
+                obj.innerHTML = end % 1 === 0 
+                    ? Math.floor(currentValue).toLocaleString('pt-BR') 
+                    : currentValue.toFixed(1).replace('.', ',');
+                    
+                if (progress < 1) window.requestAnimationFrame(step);
+            };
+            window.requestAnimationFrame(step);
+        }
+
+        // Observer para as specs e descrição
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    if (entry.target.classList.contains('specs-container')) {
+                        const items = entry.target.querySelectorAll('.spec-item');
+                        items.forEach((item, index) => {
+                            setTimeout(() => {
+                                item.classList.add('animate-focus');
+                                const counter = item.querySelector('.counter');
+                                animateValue(counter, 0, parseFloat(counter.dataset.target), 2000);
+                            }, index * 200);
+                        });
+                    }
+                    if (entry.target.classList.contains('description-section')) {
+                        entry.target.classList.add('visible');
+                    }
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.2 });
+
+        observer.observe(document.querySelector('.specs-container'));
+        observer.observe(document.querySelector('.description-section'));
+    </script>
+</body>
+</html>

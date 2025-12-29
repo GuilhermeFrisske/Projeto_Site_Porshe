@@ -15,7 +15,7 @@
             <ul class="nav-menu">
                 <li><a href="modelos.html">Modelos</a></li>
                 <li><a href="carros.html">Carros</a></li>
-                <li><a href="#">Contato</a></li>
+                <li><a href="contato.html">Contato</a></li>
             </ul>
         </nav>
     </header>
@@ -30,7 +30,7 @@
                     <p class="car-info">2024</p>
                     <h2>911 TURBO</h2>
                     <p class="descri">Onde a performance encontra a alma. 650 cv de pura engenharia alemã.</p>
-                    <button class="saiba">Ver Detalhes</button>
+                    <a href="911.html" class="saiba">Ver Detalhes</a>
                 </div>
             </div>
 
@@ -42,14 +42,14 @@
                     <p class="car-info">2025</p>
                     <h2>GT3</h2>
                     <p class="descri">O Porsche 911 GT3 é o equilíbrio perfeito entre a pista e a estrada. Equipado com um motor 4.0 aspirado de 510 cv, ele entrega uma experiência de condução pura, visceral e marcada pela precisão alemã.</p>
-                    <button class="saiba">Ver Detalhes</button>
+                    <a href="gt3.html" class="saiba">Ver Detalhes</a>
                 </div>
             </div>
         </div>
 
         <div class="arrows">
-            <button id="prev" aria-label="Anterior"><</button>
-            <button id="next" aria-label="Próximo">></button>
+            <button id="prev" aria-label="Anterior">&lt;</button>
+            <button id="next" aria-label="Próximo">&gt;</button>
         </div>
 
         <div class="indicators">
@@ -63,46 +63,46 @@
 
     <script>
         const items = document.querySelectorAll('.item');
-const dots = document.querySelectorAll('.dot');
-const next = document.getElementById('next');
-const prev = document.getElementById('prev');
-const numberDisplay = document.querySelector('.number');
+        const dots = document.querySelectorAll('.dot');
+        const next = document.getElementById('next');
+        const prev = document.getElementById('prev');
+        const numberDisplay = document.querySelector('.number');
 
-let active = 0;
-const count = items.length;
+        let active = 0;
+        const count = items.length;
 
-function updateSlider() {
-    items.forEach((item, index) => {
-        const video = item.querySelector('video');
-        
-        if (index === active) {
-            item.classList.add('active');
-            dots[index].classList.add('active');
-            if (video) video.play();
-        } else {
-            item.classList.remove('active');
-            dots[index].classList.remove('active');
-            if (video) {
-                video.pause();
-                video.currentTime = 0;
-            }
+        function updateSlider() {
+            items.forEach((item, index) => {
+                const video = item.querySelector('video');
+                
+                if (index === active) {
+                    item.classList.add('active');
+                    dots[index].classList.add('active');
+                    if (video) video.play();
+                } else {
+                    item.classList.remove('active');
+                    dots[index].classList.remove('active');
+                    if (video) {
+                        video.pause();
+                        video.currentTime = 0;
+                    }
+                }
+            });
+
+            numberDisplay.innerText = active < 9 ? `0${active + 1}` : active + 1;
         }
-    });
 
-    numberDisplay.innerText = active < 9 ? `0${active + 1}` : active + 1;
-}
+        next.onclick = () => {
+            active = (active + 1) % count;
+            updateSlider();
+        }
 
-next.onclick = () => {
-    active = (active + 1) % count;
-    updateSlider();
-}
+        prev.onclick = () => {
+            active = (active - 1 + count) % count;
+            updateSlider();
+        }
 
-prev.onclick = () => {
-    active = (active - 1 + count) % count;
-    updateSlider();
-}
-
-window.onload = updateSlider;
+        window.onload = updateSlider;
     </script>
 </body>
 </html>
