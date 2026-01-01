@@ -1,0 +1,73 @@
+/* Animação de entrada dos elementos */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes shine {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+.preview-side h1 {
+    animation: fadeInUp 0.8s ease-out;
+}
+
+.car-viewer {
+    position: relative;
+    width: 100%;
+    height: 450px;
+    background: radial-gradient(circle, #222 0%, #0b0b0b 70%);
+    border-radius: 15px;
+    overflow: hidden;
+    animation: fadeInUp 1s ease-out;
+}
+
+/* Efeito de brilho que passa pelo carro */
+.car-viewer::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(to right, transparent, rgba(255,255,255,0.05), transparent);
+    transform: skewX(-25deg);
+    animation: shine 4s infinite linear;
+    pointer-events: none;
+}
+
+.car-layer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.95); /* Começa levemente menor */
+    width: 90%;
+    opacity: 0;
+    filter: brightness(0.8);
+    transition: opacity 0.8s ease-in-out, transform 1.2s cubic-bezier(0.165, 0.84, 0.44, 1), filter 0.8s;
+}
+
+.car-layer.active {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1); /* Zoom suave ao ativar */
+    filter: brightness(1.1);
+    pointer-events: auto;
+}
+
+/* Estilo do botão com hover animado */
+.btn-buy {
+    position: relative;
+    overflow: hidden;
+    background-color: #d5001c;
+    transition: all 0.3s ease;
+}
+
+.btn-buy:hover {
+    background-color: #ff0022;
+    box-shadow: 0 0 20px rgba(213, 0, 28, 0.4);
+    transform: translateY(-2px);
+}
+
+.config-options {
+    animation: fadeInUp 1.2s ease-out;
+}

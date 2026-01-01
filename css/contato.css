@@ -1,0 +1,231 @@
+:root {
+    --porsche-red: #d5001c;
+    --transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+* {
+    margin: 0; padding: 0; box-sizing: border-box;
+}
+
+body {
+    background-color: #000;
+    /* Fonte principal para leitura */
+    font-family: 'Poppins', sans-serif;
+    color: white;
+}
+
+/* --- LOGO E TÍTULOS (ESTILO LEAGUE GOTHIC) --- */
+.logo { 
+    font-family: 'League Gothic', sans-serif;
+    font-size: 32px;
+    letter-spacing: 6px;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+.contact-header h1 {
+    font-family: 'League Gothic', sans-serif;
+    font-size: clamp(40px, 8vw, 70px);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    line-height: 0.9;
+    margin: 10px 0;
+}
+
+.info-item h3, .btn-submit {
+    font-family: 'League Gothic', sans-serif;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-size: 20px;
+}
+
+/* NAVBAR */
+.navbar {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 60px;
+    z-index: 100;
+}
+
+.logo { 
+    height: 30px; 
+    filter: brightness(0) invert(1); 
+}
+
+.nav-menu { 
+    display: flex; 
+    list-style: none; 
+    gap: 40px; 
+}
+
+/* ESTILO DO HREF (LINKS DO MENU) */
+.nav-menu a { 
+    color: #fff; 
+    text-decoration: none; 
+    font-size: 13px; 
+    text-transform: uppercase; 
+    font-weight: 700; 
+    letter-spacing: 2px;
+    opacity: 0.7;
+    position: relative;
+    padding: 5px 0;
+    transition: var(--transition);
+}
+
+.nav-menu a:hover { 
+    opacity: 1; 
+    color: var(--porsche-red);
+}
+
+.nav-menu a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--porsche-red);
+    transition: var(--transition);
+}
+
+.nav-menu a:hover::after {
+    width: 100%;
+}
+/* --- HERO SECTION --- */
+.hero-section {
+    min-height: 100vh;
+    background: url('https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?auto=format&fit=crop&q=80&w=1920') no-repeat center center/cover;
+    position: relative;
+    display: flex;
+    align-items: center;
+    transition: background-position 0.2s ease-out;
+}
+
+.overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(to right, rgba(0,0,0,0.95) 20%, rgba(0,0,0,0.4) 100%);
+}
+
+.contact-container {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px;
+}
+
+.contact-header span {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--porsche-red);
+    letter-spacing: 4px;
+}
+
+.contact-header p {
+    font-weight: 300;
+    max-width: 500px;
+    opacity: 0.8;
+}
+
+/* --- FORMULÁRIO --- */
+.contact-content {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 80px;
+    margin-top: 50px;
+}
+
+.input-group { margin-bottom: 25px; }
+.input-group label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    display: block;
+    margin-bottom: 8px;
+    color: #aaa;
+}
+
+.input-group input, .input-group textarea {
+    width: 100%;
+    padding: 15px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+    transition: var(--transition);
+}
+
+.input-group input:focus, .input-group textarea:focus {
+    outline: none;
+    border-color: var(--porsche-red);
+    background: rgba(255,255,255,0.1);
+}
+
+.btn-submit {
+    background: #fff;
+    color: #000;
+    border: none;
+    padding: 15px 50px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.btn-submit:hover {
+    background: var(--porsche-red);
+    color: #fff;
+    transform: translateY(-5px);
+}
+/* --- AJUSTE DE POSICIONAMENTO --- */
+
+.hero-section {
+    min-height: 100vh;
+    background: url('https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?auto=format&fit=crop&q=80&w=1920') no-repeat center center/cover;
+    position: relative;
+    display: flex;
+    align-items: flex-start; /* Mudamos de center para flex-start para controlar o topo */
+    padding-top: 180px;      /* Aumente este valor para descer tudo */
+    transition: background-position 0.2s ease-out;
+    overflow: hidden;
+}
+
+.contact-container {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px 40px 40px; /* Removido padding superior excessivo para usar o da section */
+}
+
+/* Opcional: Aumentar o recuo do título especificamente */
+.contact-header { 
+    margin-bottom: 80px; 
+    border-left: 4px solid var(--porsche-red); 
+    padding-left: 25px;
+    animation: fadeInUp 1s ease-out 0.3s backwards;
+}
+/* SCROLLBAR CUSTOMIZADA E CLEAN */
+        ::-webkit-scrollbar {
+            width: 5px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #000;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #222;
+            border-radius: 10px;
+            transition: 0.3s;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #d5001c;
+        }
+        html {
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
